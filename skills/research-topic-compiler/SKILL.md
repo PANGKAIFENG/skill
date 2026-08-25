@@ -26,6 +26,7 @@ description: >
 核心原则：
 
 - 先把用户原话转成明确研究目标、研究问题和输出要求，再判断研究深度、渠道和样本量。
+- 研究框架不是固定报告目录：先识别 `Research Job`，分别维护 Evidence/Explanation Framework；V0 只是可修订假设，最终报告必须从证据更新后的 Framework Vn 重新编译。
 - 先解析用户画像，再决定解释方式、案例选择、实践任务和应用转化。
 - Seed Corpus 是线索和初始假设来源，不默认是权威证据；二手核心 Claim 要追溯原始来源或披露无法追溯的影响。
 - Normal Research 和 Application 围绕最高价值证据缺口迭代；每轮只执行一个能降低关键不确定性的 Next Best Evidence Action。
@@ -65,7 +66,7 @@ description: >
 这个 Gate 的职责是把用户原话转成可执行研究 brief：
 
 - 保留用户原始意图。
-- 推断真正研究目标。
+- 推断真正研究目标和本次 `Research Job`，而不是从主题名套用上一次研究的框架。
 - 判断目标类型：Concept Lens、Industry Evolution、Application Translation、Product Candidate、Roadmap Input、Learning Pack 或 Research Radar。
 - 拆出主研究问题、子问题、out of scope 和证据标准。
 - 明确读者、产物形态和研究结果要支持的下一步动作。
@@ -149,24 +150,24 @@ Research Mode 决定研究方法，Output Artifact Mode 决定交付形态；两
 
 1. 捕获用户原话、主题和目标。若输入不够明确，先执行 `Research Goal Framing Gate`，输出 `Research Goal Framing`，把大白话转成研究目标、研究问题、输出要求和 out-of-scope。若用户只要求整理 research brief 或明确“先不要研究”，停在 framing 产物。
 2. 按 `User Context Resolution` 解析用户画像，再分别选择研究模式、`L1-L5` 深度和 Output Artifact Mode。
-3. 输出 `Research Run Plan`，明确 scope、Evidence Contract、预算、授权、Output artifact mode、产物和确认门禁。L1 直接快答或范围清楚的 L2 可把计划压缩为内部判断，不强制展示完整模板；需要授权或范围确认时仍必须先停在可见门禁。
+3. 对需要结构化报告的研究读取 `references/research-framework-compilation-contract.md`，生成并映射 Explanation/Evidence Framework；再输出 `Research Run Plan`，明确 scope、Evidence Contract、预算、授权、artifact mode、产物和确认门禁。用户已给合理结构时优先保留；L1/L2 可把计划与 V0 压缩为内部判断。
 4. `Normal Research` 与 `Application` 执行下面的七步控制面；完整对象与恢复规则必须读取 `references/iterative-research-loop.md`。
-5. `Lightweight Concept Lens`、`Learning Pack`、`Product Candidate` 和 `Radar` 保持各自 mode-specific 主流程与产物，不把七步控制面强行替换它们。可复用来源质量和证据追溯规则，但不得因此创建额外状态文件。
+5. `Lightweight Concept Lens`、`Learning Pack`、`Product Candidate` 和 `Radar` 保持各自 mode-specific 主流程与产物，不把七步控制面强行替换它们。可复用来源质量和证据追溯规则；当它们需要结构化报告时仍使用 Framework Compilation Contract，但不得因此创建不必要的状态文件。
 
 ### Normal Research / Application Iterative Control Loop
 
-1. **FRAME**：把目标、Seed Claims 和已有材料转成可修订的 Framework V0，定义 Must/Should/Could Claim、证据标准、范围与预算。Seed 的标题或转述不能替代原始来源身份。
+1. **FRAME**：把目标、Seed Claims 和已有材料转成 Evidence Framework V0；同时从 Research Job 生成 Explanation Framework V0，定义主问题、解释逻辑、节点与 Claim 映射。两者都可修订，Seed 的标题、目录或转述不能替代原始来源身份，也不能成为固定报告目录。
 2. **IDENTIFY GAP**：维护按价值排序的 Gap Ledger，标出未知、冲突、原始来源缺失、实现/独立验证/反例和迁移风险。
 3. **PLAN NEXT BEST EVIDENCE**：每轮只选一个 NBE Action，说明 target Gap、预期信息增益、证据角色、独立性、成本/访问风险和选择理由。
 4. **ACQUIRE**：根据 Gap 动态选择渠道并获取公开或已授权来源。Obsidian 是内部基线；扩源、同行权威比较和开源项目抽样都是按需策略，不是固定清单。
 5. **EVALUATE**：把 Source、Evidence、Claim 分开，记录可定位摘录、直接性、新鲜度、lineage 和局限；伪官方或无法验证出处的材料降级，不进入最高等级核心结论。
-6. **UPDATE FRAMEWORK**：用 `Fill / Refine / Split / Merge / Challenge / Invalidate / Expand / No change` 记录 before、after、evidence 和 rationale；不得静默覆盖或强行调和冲突。
+6. **UPDATE FRAMEWORK**：先用 `Fill / Refine / Split / Merge / Challenge / Invalidate / Expand / No change` 更新 Evidence Framework；再判断 Explanation Framework 是否需要 `Add / Split / Merge / Reorder / Reframe / Remove / Challenge / No structural change`。两类事件都保留 before、after、evidence 和 rationale；不得静默覆盖或强行调和冲突。
 7. **CHECK SATURATION**：只返回 `Continue / Stop / Pause / Escalate` 之一。Continue 回到步骤 2；Stop 后综合报告；Pause 写 Checkpoint；Escalate 转用户确认、深度升级或 `decision-research`。
 
 ### Depth Trimming
 
 - `L1`：内部执行一次 ephemeral 压缩循环，只处理一个核心 Claim/Gap；充分权威材料已覆盖时不扩源、不建文件、不向用户暴露控制面术语。
-- `L2`：维护 3-5 个框架节点，最多两个 acquisition action；默认不建完整图谱或持久化状态，输出紧凑结论和未解决问题。
+- `L2`：维护约 3-5 个 Explanation Framework 节点和相应的轻量 Evidence Framework，最多两个 acquisition action；默认不建完整图谱或持久化状态，输出紧凑结论和未解决问题。
 - `L3`：所有 Must Claim 有状态；核心二手 Claim 至少尝试一次原始来源追溯；按 `00-05` 增量持久化。
 - `L4`：使用完整 Claim/Evidence/Source Graph、Change Log、独立验证、反例和正式饱和门禁。
 - `L5`：首轮建立 L4 基线，后续由 Radar mode 做 delta；记录 `No change`，自动化仍需用户明确授权。
@@ -186,7 +187,7 @@ Research Mode 决定研究方法，Output Artifact Mode 决定交付形态；两
 - `blocked-authorization`：缺少授权导致最低可投影状态不成立时不渲染；不得用 Seed 或未授权材料填充页面。
 - `escalated`：默认不渲染，由承接责任的 Skill 或用户决策决定后续产物。
 
-Dashboard 必须从 Evidence/Source Graph、Framework Change Events、confidence、residual Gap、residual risks 和 next actions 投影；压缩展示时不得删除影响结论的矛盾、弱证据或未关闭问题，也不得把研究输入包装成最终决策。
+Dashboard 必须从 Framework Vn 投影，并保留它与 Evidence/Source Graph、Framework Change Events、confidence、residual Gap、residual risks 和 next actions 的映射；可视化形式由 Vn 中的阶段、比较、因果、层级、流程、循环或状态关系决定。压缩展示时不得删除影响结论的矛盾、弱证据或未关闭问题，也不得把研究输入包装成最终决策。
 
 ### Product Candidate Research 分支步骤
 
@@ -215,14 +216,14 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 ```markdown
 **Research Run Plan**
 - Topic: <研究主题>
-- User goal: <用户要学会、判断或沉淀什么>
+- User goal / Research Job: <用户要学会、判断或沉淀什么；这份研究要帮助谁理解、判断或完成什么>
 - Framed from raw intent: <yes/no; if yes, summarize interpreted research goal>
 - Research mode: <Normal Research / Lightweight Concept Lens / Learning Pack / Application / Radar / Product Candidate>
 - Output artifact mode: <chat-brief / research-project-md / concept-dashboard-html / research-dashboard-html>
 - User context: <role, domain, technical_depth, goal_type, output_preference, application_context, decision_need>
 - Recommended depth: <L1 / L2 / L3 / L4 / L5, with reason>
 - Topic type: <平台能力 / 开源工程 / 产品竞品 / 学术方法 / 政策合规 / 市场趋势 / 其他>
-- Core questions: <按理解型 / 判断型 / 设计型 / 实践型 / 复盘型组织>
+- Core questions / Explanation Framework V0: <controlling question + dominant logic + provisional nodes; user-provided structure if applicable>
 - Output requirements: <读者 / 产物 / 必须支持的下一步 / 不做什么>
 - Evidence contract: <Must Claim 所需来源角色、直接性、独立性和完成标准>
 - Effort budget: <时间 / acquisition action / 成本边界>
@@ -262,7 +263,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 - Output artifact mode: <chat-brief / research-project-md / concept-dashboard-html / research-dashboard-html>
 - Persona adaptation: <role/domain/depth/goal used, or generic>
 - Channels used: <channels + each channel's target Gap/evidence role>
-- Core conclusions: <3-7 bullets>
+- Core conclusions / Explanation Framework: <latest version + controlling question + dominant logic + 3-7 conclusions + material structural changes or justified none>
 - Application outputs: <judgment, template, task, PRD/Workflow/Eval/SOP/roadmap, or none>
 - Strongest evidence: <top sources>
 - Weak or trend evidence: <sources that need caution>
@@ -297,7 +298,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 - `Lightweight Concept Lens`：给出概念源流、语义演化、范式阶段、PM 决策问题、反模式或概念债务判断；如果生成 HTML，静态验证已通过或明确说明限制。
 - HTML artifact：生成对应的 `dashboard.html` 与 `summary.md`；使用正确的 root marker；运行 `scripts/validate_html_artifact.py`；完成桌面与移动端视觉检查，或明确记录浏览器验证限制。Normal Research/Application 的 Dashboard 还必须保留唯一终态、证据强度、关键变化、residual Gap/risks 和下一步行动。
 - `L2`：给出主题地图、核心概念、基础案例、来源和下一步阅读。
-- `L3`：Research Project 或聊天报告已覆盖问题清单、证据矩阵、阶段结论和第一阅读入口式 `05_研究报告`，能帮助陌生领域入门。
+- `L3`：Research Project 或聊天报告已覆盖问题清单、证据矩阵、阶段结论和第一阅读入口式 `05_研究报告`；结构化报告已识别 Research Job、建立 Evidence/Explanation Framework 映射并从通过质量门禁的 Framework Vn 综合，未把示例五问、Seed 目录或上一次报告模板当成通用框架。
 - `L4`：按当前 Gap 和用户目标形成必要的外部渠道研究、行业案例对照、最佳实践或应用模板，能指导方案设计、选型、商业化、企业 adoption、workflow 设计或 PRD 输入；若是高门槛应用研究，还应给出迁移判断、矩阵、风险和分阶段路径。
 - `L5`：形成 watchlist、更新日志、稳定/候选/待验证/废弃结论分层和后续自动化建议；若用户明确确认创建 automation，则调用 Codex `cron` automation，并保留低风险写入边界与人工确认点。
 - Product Candidate Research：候选池通过 Quality Gate（至少 3 个候选项有完整 schema 填充）、评分表输出、Candidate Summary 包含 Top candidates 和风险、Cross-Session Handoff 文件可被后续会话或 `decision-research` 直接消费。
@@ -310,8 +311,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 
 按当前分支加载，不要一次性读取全部 references：
 
-- 研究入口与路由：`mode-selection.md`、`mode-routing-guide.md`、`research-goal-framing-gate.md`、`research-depth-rubric.md`、`user-context-standards.md`。
-- Normal/Application：`iterative-research-loop.md`、`applied-business-research-contract.md`、`source-quality-rules.md`、`report-writing-standards.md`。
+- 研究入口与 Normal/Application：`mode-selection.md`、`mode-routing-guide.md`、`research-goal-framing-gate.md`、`research-framework-compilation-contract.md`、`research-depth-rubric.md`、`user-context-standards.md`、`iterative-research-loop.md`、`applied-business-research-contract.md`、`source-quality-rules.md`、`report-writing-standards.md`。
 - 渠道与写回：`pre-research-source-expansion.md`、`channel-selection-rubric.md`、`channel-registry.md`、`obsidian-output-contract.md`。
 - Concept Lens / HTML：`concept-lens-output-contract.md`、`concept-lens-html-dashboard-template.md`、`concept-lens-paradigm-framework.md`、`concept-lens-source-and-factuality.md`、`concept-lens-design-quality.md`；一般研究 Dashboard 使用 `research-dashboard-output-contract.md` 和 `scripts/validate_html_artifact.py`。
 - Product Candidate：`product-decision-mode.md`、`project-context-intake.md`、`taxonomy-translation.md`、`candidate-backlog-schema.md`、`cross-session-handoff.md`、`post-research-exits.md`。

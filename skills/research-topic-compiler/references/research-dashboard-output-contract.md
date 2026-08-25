@@ -2,7 +2,7 @@
 
 Use this contract when `research-topic-compiler` chooses `research-dashboard-html` for a general research topic, Application translation, business-facing explanation, or cross-functional review artifact.
 
-The dashboard is a reading and decision-support surface. It makes a completed research result easier to scan, compare, challenge, and reuse. It is not a marketing page, UI mockup, slide deck, final decision authority, or replacement for the evidence matrix.
+The dashboard is a reading and decision-support surface. It makes a completed research result easier to scan, compare, challenge, and reuse. It is not a marketing page, UI mockup, slide deck, final decision authority, replacement for the evidence matrix, or a second reasoning process separate from the Markdown report.
 
 ## File Layout
 
@@ -34,13 +34,13 @@ Apply terminal status policy before rendering:
 
 When the gate passes, project the latest research state rather than restating the seed material:
 
-- Latest Framework and material Framework Change Events.
+- Latest Explanation Framework Vn, its Evidence Framework mapping, and material Evidence/Structural Change Events.
 - Important claims and their Source/Evidence support.
 - Confidence, uncertainty, contradictions, and counterexamples.
 - Unique terminal status, stop reason, residual Gaps, and residual risks.
 - Next actions tied to the user's product, business, learning, or validation goal.
 
-The visual layer may compress detail, but it must not hide a weakness that could change the conclusion. Link or point back to the underlying evidence matrix when one exists.
+The visual layer may compress presentation, but it must not hide a weakness that could change the conclusion or drop material report detail. Preserve information density with compact tables, annotations, visible source links, progressive disclosure, and drill-down sections. Link or point back to the underlying evidence matrix when one exists.
 
 ## Markdown Summary
 
@@ -90,7 +90,7 @@ Use exactly one dashboard root family. Do not place `data-concept-lens` and `dat
 
 ## Information Architecture
 
-Use this page order unless the research result has a stronger reason to differ:
+Use this page order as a starting pattern, not a fixed report framework. The `research-framework-compilation-contract.md` and latest Framework Vn determine the final sequence:
 
 1. Executive summary: topic, one-sentence conclusion, audience, confidence, source coverage, and terminal status.
 2. Reader tabs or section: role-specific interpretation and "what this means for you".
@@ -102,12 +102,31 @@ Use this page order unless the research result has a stronger reason to differ:
 8. Next actions: concrete reading, experiment, PRD, validation, or team handoff steps.
 9. Sources and assumptions.
 
+## Relationship-to-Visual Mapping
+
+Choose visuals from the logical relationships in Framework Vn, not from a decorative component inventory:
+
+| Framework relationship | Preferred visual |
+| --- | --- |
+| Stages, maturity, or evolution | numbered progression, staircase, or timeline |
+| Stable comparison dimensions | matrix, compact table, or aligned columns |
+| Cause, mechanism, or dependency | causal chain or directed flow |
+| Workflow, actor, or handoff | process flow or swimlane |
+| Hierarchy or taxonomy | tree or nested map |
+| Feedback or iteration | loop diagram |
+| State and transition | state map |
+| Claim-to-source support | evidence map or claim-source matrix |
+| Priority and uncertainty | quadrant or ordered portfolio |
+
+Use a diagram only when it materially improves comprehension. A dense table is better than a decorative chart when the reader needs exact comparison. The HTML and Markdown outputs must share the same controlling question, conclusion spine, section boundaries, confidence, evidence mapping, and residual Gaps even when their presentation differs.
+
 ## Design Rules
 
 - The first viewport should feel like a working research dashboard, not a landing page.
 - Use a restrained professional interface with one purposeful accent color and semantic status colors.
 - Use cards only for repeated findings, sources, risks, or next actions. Do not nest cards.
 - Prefer grids, tabs, segmented controls, compact tables, and sticky or top navigation for scanability.
+- Preserve information density; visualization should reveal relationships and navigation, not replace specific findings with slogans.
 - Keep text readable on desktop and mobile; no overlapping panels or horizontal overflow.
 - Surface uncertainty early; do not hide it in an appendix.
 - Do not use decorative blobs, glassmorphism blankets, oversized hero sections, stock-like imagery, or generic purple/blue gradients.

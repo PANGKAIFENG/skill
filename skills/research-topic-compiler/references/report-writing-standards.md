@@ -8,6 +8,17 @@ Use these standards for `05_研究报告.md`.
 
 `02_证据与卡片.md` is the drill-down layer. The report should cite it and the strongest sources, but it must not force the user to read source cards before understanding the topic.
 
+## Framework-First Compilation
+
+Before writing, read `research-framework-compilation-contract.md` and compile the report from the latest `Explanation Framework Vn`.
+
+- The report outline is an output of the Research Job, evidence, audience, and framework quality gate.
+- The patterns below are reusable ingredients, not mandatory universal tables of contents.
+- Do not preserve Framework V0 merely because writing has already started; recompile from Vn after material `Add / Split / Merge / Reorder / Reframe / Remove / Challenge` events.
+- Keep the Evidence Framework mapping: every material finding needs evidence, or an explicit label as context, inference, assumption, or open question.
+- When the user supplies a coherent outline, preserve it unless evidence reveals a material overlap, omission, contradiction, or sequence problem.
+- A set of questions that worked for a previous industry study remains an example or eval fixture, not the default shape for unrelated research.
+
 ## Report Modes
 
 Choose the report shape based on the research mode:
@@ -21,9 +32,9 @@ Modes can be combined, but avoid producing a bloated course-like report.
 
 When Application Mode is high-stakes, such as product strategy, commercialization, packaging, enterprise adoption, implementation, or workflow design, use `applied-business-research-contract.md` and the Applied Decision Structure below.
 
-## Learning-Oriented Structure
+## Learning-Oriented Pattern
 
-Use this structure for Learning Pack Mode or when the user is entering an unfamiliar domain:
+Use this as a component library for Learning Pack Mode or when the user is entering an unfamiliar domain. Select and reorder only the sections needed by Framework Vn:
 
 ```markdown
 # 研究报告
@@ -84,9 +95,9 @@ Use this structure for Learning Pack Mode or when the user is entering an unfami
 - 下一步应该做什么？
 ```
 
-## Applied Decision Structure
+## Applied Decision Pattern
 
-Use this structure when the research must support product strategy, commercialization, packaging, enterprise adoption, implementation, or workflow decisions.
+Use this as a component library when the research must support product strategy, commercialization, packaging, enterprise adoption, implementation, or workflow decisions. Framework Vn decides the actual sequence and whether each component is required.
 
 ```markdown
 # 研究报告
@@ -127,9 +138,9 @@ Use this structure when the research must support product strategy, commercializ
 ## 8. 待验证假设
 ```
 
-## Normal Research Structure
+## Normal Research Pattern
 
-For ordinary research where the user does not need a learning route, use a compact version:
+For ordinary research where the user does not need a learning route, this is a compact starting pattern. Do not use it when a different logic better answers the Research Job:
 
 ```markdown
 # 研究报告
@@ -181,6 +192,9 @@ Every major conclusion should state its implication for the resolved user contex
 ## Writing Rules
 
 - Start with synthesis, not source order.
+- State or make inspectable the controlling question and conclusion spine for L3+ work.
+- Organize sections by the dominant relationship in Framework Vn: chronology, comparison, causality, hierarchy, workflow, decision, learning path, or an explicitly justified hybrid.
+- Keep sibling sections at comparable abstraction levels; disclose known omissions and treat MECE as relative to the current scope and audience.
 - Prefer first-principles explanation before jargon.
 - Answer by question and cognitive path, not by article order.
 - Each major answer must have `关键依据` or cite the evidence matrix.
@@ -208,3 +222,5 @@ Use `02_证据与卡片.md` for detailed source-by-source notes.
 - Writing abstract conclusions with no action or user-context implication.
 - Writing generic technical explanation unrelated to the user's role or application context.
 - Creating a report so long that the user still needs another summary.
+- Copying a previous report's framework, a seed article's table of contents, or one mode pattern without checking fit to the current Research Job.
+- Filling Framework V0 headings after evidence has materially changed the explanation logic.

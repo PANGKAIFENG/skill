@@ -25,6 +25,8 @@ Normal Research 和 Application 使用本合同，把研究从一次性渠道扫
 - 把 `Source`、`Evidence` 和 `Claim` 分开：来源不是证据，证据也不是结论。
 - 二手材料、转载和摘要若来自同一原始材料，必须共享 `lineage_root`，不能冒充独立验证。
 - 新证据通过 Change Event 改变 Framework；不得静默覆盖、不强行调和冲突。
+- `Evidence Framework` 与 `Explanation Framework` 分开维护：前者决定要证明什么，后者决定目标读者按什么逻辑理解；详细结构合同见 `research-framework-compilation-contract.md`。
+- Evidence Change Event 之后必须判断 Explanation Framework 是否需要结构变化；报告必须从最新 Framework Vn 综合，而不是回填 V0 目录。
 - 停止由 fit-for-purpose 或饱和门禁决定，不由来源数、搜索结果数或文件完成度决定。
 - 若访问、预算、授权或决策边界阻止继续，返回唯一终态并留下可执行 Checkpoint。
 
@@ -61,11 +63,12 @@ run:
   evidence_contract: "Must Claim 达到什么标准"
   effort_budget: "时间、动作数或成本边界"
   authorization: { public: true, restricted: [] }
-  framework_version: "v0"
+  evidence_framework_version: "v0"
+  explanation_framework_version: "v0"
   status: "active"
 ```
 
-### Framework Node and Claim
+### Evidence Framework Node and Claim
 
 ```yaml
 framework_node:
@@ -86,6 +89,29 @@ claim:
   evidence_ids: []
   open_gap_ids: []
 ```
+
+### Explanation Framework
+
+结构化报告使用 `research-framework-compilation-contract.md` 定义的 Explanation Framework。最小状态如下：
+
+```yaml
+explanation_framework:
+  version: "v0"
+  research_job: "这份研究要帮助谁理解、判断或完成什么"
+  controlling_question: "主问题"
+  conclusion_spine: "从问题到可用答案的最短逻辑路径"
+  dominant_logic: "chronology | comparison | causal | hierarchy | workflow | decision | learning | hybrid"
+  nodes:
+    - id: "XF-01"
+      purpose: "对读者的认知或判断作用"
+      level: "context | dimension | mechanism | finding | implication | action"
+      relation_to_parent: "explains | causes | compares | precedes | decomposes | supports | challenges | applies"
+      evidence_claim_ids: ["C-01"]
+      status: "open | supported | contested | reframed | removed"
+  known_omissions: []
+```
+
+Evidence Framework 可以比报告更细；Explanation Framework 只组织与 Research Job 有关的证据承载结论。每个 material explanation node 必须映射 Claim，或明确标为 context、inference、assumption、open question。
 
 ### Gap and NBE Action
 
@@ -157,6 +183,8 @@ Source -extracts-> Evidence -supports/challenges-> Claim -belongs_to-> Framework
 
 ### Framework Change Event
 
+下面的事件更新 `Evidence Framework` 中的 Claim 与证据状态：
+
 ```yaml
 change_event:
   id: "CE-01"
@@ -168,6 +196,22 @@ change_event:
   before: "更新前状态或陈述"
   after: "更新后状态或陈述"
   rationale: "证据为何支持此变化"
+```
+
+Explanation Framework 的结构变化使用独立事件，避免把证据置信度更新与报告逻辑更新混为一谈：
+
+```yaml
+structural_change_event:
+  id: "SCE-01"
+  from_version: "v0"
+  to_version: "v1"
+  type: "Add | Split | Merge | Reorder | Reframe | Remove | Challenge | No structural change"
+  trigger_claim_ids: ["C-01"]
+  affected_node_ids: ["XF-01"]
+  before: "更新前的解释结构"
+  after: "更新后的解释结构"
+  reader_impact: "如何改变或改善目标读者的理解"
+  rationale: "证据或用户目标为何要求此变化"
 ```
 
 ### Saturation Check and Checkpoint
@@ -186,7 +230,8 @@ saturation_check:
 
 checkpoint:
   last_completed_state: "CHECK SATURATION"
-  framework_version: "vN"
+  evidence_framework_version: "vN"
+  explanation_framework_version: "vN"
   current_gap: "G-xx"
   ranked_nbe_queue: []
   completed_actions: []
@@ -200,10 +245,11 @@ checkpoint:
 1. 保留用户原始意图，并写清研究要支持的下一步动作。
 2. 从 Seed Corpus 抽取 Seed Claims、来源主体、疑似原始出处、术语和证据角色。
 3. 标记 Seed 的 provenance。标题、自称“官方”、转述中的品牌名都不能替代可验证发布主体与原始 URL。
-4. 建立 Framework V0：将问题拆为 Framework Nodes，并为每个 Must/Should/Could Claim 定义 required evidence。
-5. 明确 scope、out-of-scope、预算、授权和 Evidence Contract。
+4. 建立 Evidence Framework V0：将问题拆为 Evidence Framework Nodes，并为每个 Must/Should/Could Claim 定义 required evidence。
+5. 读取 `research-framework-compilation-contract.md`，从 Research Job 建立 Explanation Framework V0，写清 controlling question、dominant logic、解释节点和 Claim 映射。它是可被证据改变的逻辑地图，不是锁定的报告目录。
+6. 明确 scope、out-of-scope、预算、授权和 Evidence Contract。
 
-Framework V0 是可被推翻的研究假设，不是报告目录。若用户已提供足够权威材料，仍建立最小 Claim/Gap 判断，但不要为了展示流程而扩源。
+两个 V0 都是可被推翻的研究假设。Evidence Framework 不是来源清单，Explanation Framework 不是固定模板。若用户已提供足够权威材料，仍建立最小 Claim/Gap 与解释逻辑判断，但不要为了展示流程而扩源。用户提供合理结构时先保留，只有证据或显式冲突证明需要变化时才调整。
 
 ## IDENTIFY GAP
 
@@ -269,7 +315,7 @@ Framework V0 是可被推翻的研究假设，不是报告目录。若用户已�
 
 ## UPDATE FRAMEWORK
 
-每个已评估 NBE 必须创建一个 Change Event：
+每个已评估 NBE 必须创建一个 Evidence Change Event：
 
 | Type | Use when |
 | --- | --- |
@@ -283,6 +329,13 @@ Framework V0 是可被推翻的研究假设，不是报告目录。若用户已�
 | `No change` | 有效获取但未提供新信息；仍记录边际产出 |
 
 `before`、`after`、`evidence_ids` 和 `rationale` 不得缺失。`Challenge` / `Invalidate` / `Split` 优先保留冲突与条件差异，不得为获得整齐结论而强行调和。
+
+然后判断 Explanation Framework 是否需要结构变化：
+
+- `Add / Split / Merge / Reorder / Reframe / Remove / Challenge`：创建 Structural Change Event，并更新版本。
+- `No structural change`：证据改变了细节或置信度，但现有解释逻辑仍成立。
+
+结构更新后运行 Framework Quality Gate：检查 Research Job fit、controlling question、抽象层级、逻辑关系、递进、重叠、覆盖、相对 MECE、证据映射和 audience fit。不要为了制造变化而修改结构，也不要因为 V0 已经写好就忽略证据驱动的重排或重构。
 
 ## CHECK SATURATION
 
@@ -316,7 +369,7 @@ Framework V0 是可被推翻的研究假设，不是报告目录。若用户已�
 5. `complete-saturated`：通过 Completion Gate，并满足 L4 连续两个独立 lineage 低增益条件。
 6. `complete-fit-for-purpose`：通过 Completion Gate，允许不阻碍下一步的 Should/Could Gap。
 
-不能仅因“已看 N 个来源”“候选池已读完”“所有文件已生成”而完成。最终输出必须包含 terminal status、stop reason、未解决问题和 residual risks。
+不能仅因“已看 N 个来源”“候选池已读完”“所有文件已生成”而完成。最终输出必须包含 terminal status、stop reason、未解决问题和 residual risks。结构化报告还必须从通过质量门禁的最新 Explanation Framework Vn 重新综合，而不是继续填充 V0。
 
 ## Failure and Recovery
 
@@ -333,11 +386,11 @@ Framework V0 是可被推翻的研究假设，不是报告目录。若用户已�
 
 ## Checkpoint and Resume
 
-L3+、跨会话或中断前写 Checkpoint。至少保存 framework version、最后完成状态、当前 Gap、已排序 NBE 队列、已完成/阻塞动作、下一精确动作和 artifact paths。
+L3+、跨会话或中断前写 Checkpoint。至少保存 Evidence/Explanation Framework version、最后完成状态、当前 Gap、已排序 NBE 队列、已完成/阻塞动作、下一精确动作和 artifact paths。
 
 恢复时：
 
-1. 读取 Evidence Contract、最新 Framework 版本和 Checkpoint。
+1. 读取 Evidence Contract、最新 Evidence/Explanation Framework 版本和 Checkpoint。
 2. 以 canonical URL/path/repository identity 和 `lineage_root` 去重，不以标题去重。
 3. 检查来源 freshness、访问状态和用户是否修改 scope、预算或授权。
 4. 对旧 Claim 与新 Evidence 逐条合并；时间更晚不是覆盖理由。

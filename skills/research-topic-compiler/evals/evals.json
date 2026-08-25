@@ -642,6 +642,104 @@
           "text": "It offers decision-research as next_owner but does not create a Decision Record or continue the chain."
         }
       ]
+    },
+    {
+      "id": "framework-compilation-skill-evaluation-industry-regression",
+      "type": "behavior-regression",
+      "prompt": "作为 AI 产品经理，我要系统研究 Skill/Agent 的评估体系。最终需要知道行业现状、代表性团队怎样工作、最佳实践、演变路线以及结合我们业务怎么做，但不要把这五个问题当作通用模板。请先识别这次 Research Job，给出 Explanation Framework V0；研究中说明证据如何改变框架，最后从 Framework Vn 输出一份逻辑递进、相对 MECE 的高信息密度报告，并说明哪些关系适合可视化。",
+      "files": [],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Compiles an industry-application explanation framework for this specific AI PM job, links it to the evidence framework, revises it when evidence changes the model, and synthesizes from Framework Vn without promoting the five requested concerns into a universal template.",
+      "assertions": [
+        {
+          "text": "Names the AI product manager's Research Job, audience, controlling question, conclusion spine, and a revisable Explanation Framework V0."
+        },
+        {
+          "text": "Distinguishes what must be proven in the Evidence Framework from how the reader should understand the topic in the Explanation Framework."
+        },
+        {
+          "text": "Organizes vendor practices as evidence for cross-company patterns or contrasts rather than writing one disconnected section per company or source."
+        },
+        {
+          "text": "Records material structural changes with before, after, triggering evidence, rationale, and reader impact, then synthesizes the report from Framework Vn."
+        },
+        {
+          "text": "Treats the five concerns in the prompt as requirements for this study, not as the default framework for future research."
+        },
+        {
+          "text": "Maps stages, comparisons, loops, hierarchies, states, or evidence relationships to suitable visual forms without reducing information density."
+        }
+      ]
+    },
+    {
+      "id": "framework-compilation-transfer-user-activation-diagnosis",
+      "type": "transfer",
+      "prompt": "研究为什么团队协作产品的新用户注册后没有创建第一个项目。读者是增长产品经理，目标是形成下一轮访谈和实验假设，不做行业全景，也不做竞品公司罗列。请根据这个目标自己编译报告框架，并说明框架如何随证据迭代。",
+      "files": [],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Compiles a user-problem diagnosis framework around activation behavior, competing causal explanations, evidence gaps, segmentation, and validation actions instead of reusing an industry-evolution or vendor-practice outline.",
+      "assertions": [
+        {
+          "text": "Identifies the primary Research Job as diagnosing activation failure and preparing interviews or experiments."
+        },
+        {
+          "text": "Uses a causal, behavioral, funnel, or hypothesis-testing explanation logic appropriate to the goal; it does not force industry status, vendor practices, best practices, and evolution into the outline."
+        },
+        {
+          "text": "Links explanation nodes to evidence needs such as behavioral data, user segments, interviews, competing mechanisms, and counterexamples."
+        },
+        {
+          "text": "Ends with bounded validation actions and residual uncertainty rather than claiming a final cause without evidence."
+        }
+      ]
+    },
+    {
+      "id": "framework-compilation-preserves-user-provided-structure",
+      "type": "negative",
+      "prompt": "我已经和评审人确认报告只保留三章：1）问题定义与边界；2）三类方案按同一维度比较；3）建议验证清单。请按这个结构完成研究，不要调整章节。你可以在章节内补充证据、反例和不确定性。",
+      "files": [],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Treats the coherent three-part outline as an explicit output contract, maps evidence and uncertainty into it, and does not restructure merely to demonstrate framework compilation.",
+      "assertions": [
+        {
+          "text": "Preserves the three top-level chapters and their order."
+        },
+        {
+          "text": "Maps claims, evidence, counterexamples, confidence, and residual gaps into the supplied structure."
+        },
+        {
+          "text": "Does not add a generic industry status, evolution, vendor-by-vendor, learning route, or best-practice chapter."
+        },
+        {
+          "text": "If the supplied structure creates a material evidence limitation, discloses it without silently replacing the structure."
+        }
+      ]
+    },
+    {
+      "id": "framework-compilation-reframes-after-evidence",
+      "type": "behavior-regression",
+      "prompt": "研究一类 AI 工作台产品。初始材料把行业写成从聊天、助手到自主 Agent 的单线六阶段；后续一手证据显示这些形态长期并存，差异主要来自任务风险、授权强度和可验证性。请展示报告框架应该如何变化，而不是只在原六阶段下面追加说明。",
+      "files": [],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Challenges the initial linear maturity narrative and materially reframes the explanation around parallel operating modes and decision dimensions, preserving the original frame as history rather than silently overwriting it.",
+      "assertions": [
+        {
+          "text": "Represents the six-stage model as Explanation Framework V0 or a seed frame, not an established universal truth."
+        },
+        {
+          "text": "Uses Reframe, Split, Reorder, or Challenge with before, after, triggering evidence, rationale, and reader impact."
+        },
+        {
+          "text": "Framework Vn explains coexistence through task risk, authorization strength, verifiability, or other evidence-supported dimensions instead of merely appending caveats to the six stages."
+        },
+        {
+          "text": "The final artifact is synthesized from Framework Vn and keeps the contested linear model visible as a bounded interpretation or historical change."
+        }
+      ]
     }
   ]
 }

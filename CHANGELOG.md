@@ -6,6 +6,11 @@ This project uses semantic-ish release tags for public snapshots. The current fo
 
 ## Unreleased
 
+### Changed
+
+- Upgraded `research-topic-compiler` with a dynamic framework-compilation contract that separates Evidence Framework from Explanation Framework, derives Framework V0 from each Research Job, records evidence-driven structural changes, and recompiles Markdown or HTML from Framework Vn instead of reusing fixed report templates.
+- Added historical, transfer, structural-reframe, and user-provided-outline eval coverage plus a dedicated framework-compilation grader.
+
 ## [0.3.3] - 2026-08-10
 
 ### Added

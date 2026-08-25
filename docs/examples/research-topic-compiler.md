@@ -21,10 +21,13 @@ $research-topic-compiler
 - Defines primary research question, sub-questions, output requirements, and out-of-scope.
 - Stops at the framing brief when the user asks not to start research yet.
 - Clarifies research depth and decision goal.
-- Builds a research frame before collecting facts.
+- Identifies the Research Job and builds a revisable Explanation Framework V0 before collecting facts.
+- Keeps the Evidence Framework (what must be proven) separate from the Explanation Framework (how this reader should understand it).
+- Records material framework changes and recompiles the final report from Framework Vn rather than reusing a fixed outline.
 - Separates concept lineage, current usage, workflow stages, and open questions.
 - Produces a PM decision matrix or research report.
 - Calls out source quality and uncertainty when live research is used.
+- Preserves a coherent user-provided report structure unless evidence reveals a material reason to change it.
 
 ## Good Follow-Up
 

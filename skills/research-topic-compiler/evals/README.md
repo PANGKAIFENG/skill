@@ -19,6 +19,8 @@ The independent holdout is intentionally absent from this directory. Reveal it o
 
 Use `graders/iterative-research-rubric.md`. Objective assertions may be checked against fixture IDs and paths. Gap quality, source independence, framework change, and stopping sufficiency require model or human review.
 
+Use `graders/research-framework-compilation-rubric.md` for framework-compilation cases. It grades Research Job fit, separate Evidence/Explanation Frameworks, structural adaptation, logical progression, relative MECE, user-provided structure boundaries, and consistent Markdown/HTML projection.
+
 Use `graders/dashboard-artifact-rubric.md` for `research-dashboard-html` runs. Grade both files plus the trace, run the validator, and keep browser-only claims unverified until desktop/mobile evidence exists.
 
 ## Deterministic Checks

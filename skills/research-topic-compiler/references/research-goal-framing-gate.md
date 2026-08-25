@@ -7,7 +7,7 @@ description: Convert fuzzy user language into an explicit research goal, questio
 
 Use this file when the user provides vague, colloquial, broad, or solution-shaped research intent and the real research goal is not yet explicit.
 
-The gate prevents the research run from starting with a shallow topic label. It turns the user's words into a usable research brief before source collection, Obsidian writes, Radar runs, or Product Candidate work begins.
+The gate prevents the research run from starting with a shallow topic label. It turns the user's words into a usable research brief and identifies the `Research Job` before source collection, framework compilation, Obsidian writes, Radar runs, or Product Candidate work begins.
 
 ## Trigger Signals
 
@@ -36,7 +36,13 @@ Skip this gate only when the user already provides a clear topic, key questions,
    - Write one explicit research goal in operational language.
    - The goal should answer: "After this research, what can the user do that they cannot do now?"
 
-4. **Choose goal type**
+4. **Identify the Research Job**
+   - State who must understand, judge, or act differently after reading the result.
+   - Name one primary job and any secondary jobs.
+   - Write one controlling question for the primary job.
+   - Do not infer a universal framework from the topic name or copy the last successful report outline.
+
+5. **Choose goal type**
    - `Concept Lens`: concept lineage, semantic drift, paradigm stages, hype vs substance.
    - `Industry Evolution`: market narrative, product direction, mature vs emerging patterns.
    - `Application Translation`: mapping a general trend into the user's domain, users, tasks, artifacts, and capability barriers.
@@ -46,12 +52,12 @@ Skip this gate only when the user already provides a clear topic, key questions,
    - `Learning Pack`: structured learning for an unfamiliar domain.
    - `Research Radar`: living knowledge base for an evolving topic.
 
-5. **Split research questions**
+6. **Split research questions**
    - Create one primary question.
    - Create 3-7 sub-questions.
    - Mark each sub-question as `understanding`, `judgment`, `translation`, `design`, `validation`, or `decision-input`.
 
-6. **Define output requirements**
+7. **Define output requirements**
    - Reader or audience.
    - Output artifact type.
    - What the output must enable next.
@@ -59,12 +65,12 @@ Skip this gate only when the user already provides a clear topic, key questions,
    - Evidence standard and uncertainty labeling. If goal type is `Applied Business Research`, include decision context, transfer reasoning, judgment matrix, staged recommendation, and validation gaps.
    - What is explicitly out of scope.
 
-7. **Set mode and depth**
+8. **Set mode and depth**
    - Select the recommended research mode.
    - Select depth `L1-L5`.
    - If Radar, Product Candidate, or Application Mode applies, say why.
 
-8. **Decide whether to ask or proceed**
+9. **Decide whether to ask or proceed**
    - Ask at most 3 clarifying questions only when ambiguity changes the research goal, output artifact, source boundary, or write location.
    - If a reasonable interpretation is safe, proceed with assumptions and label them.
 
@@ -76,6 +82,8 @@ Use this compact section before `Research Run Plan`:
 **Research Goal Framing**
 - User raw intent: <preserve the user's words in short form>
 - Interpreted research goal: <one operational goal>
+- Research Job: <who needs to understand, judge, or do what>
+- Controlling question: <the one primary question the explanation must answer>
 - Goal type: <Concept Lens / Industry Evolution / Application Translation / Applied Business Research / Product Candidate / Roadmap Input / Learning Pack / Research Radar>
 - Primary research question: <one question>
 - Sub-questions:
@@ -89,6 +97,7 @@ Use this compact section before `Research Run Plan`:
   - Evidence standard: ...
   - Out of scope: ...
 - Recommended mode/depth: <mode + L1-L5>
+- Framework boundary: <compile a new Explanation Framework / preserve the user's supplied structure / no structured report needed>
 - Assumptions to proceed: ...
 - Confirmation needed: <none / specific question>
 ```
@@ -139,6 +148,8 @@ Framing:
 ## Common Mistakes
 
 - Starting web search from the user's first noun phrase instead of reframing the research job.
+- Treating one study's useful questions as the default framework for every future topic.
+- Choosing a report template before identifying who the report must help and what it must enable.
 - Treating a roadmap-prep research run as a roadmap decision.
 - Creating a Research Radar Loop just because the topic is current; the user must need ongoing updates.
 - Asking too many questions when the research goal can be safely inferred.
