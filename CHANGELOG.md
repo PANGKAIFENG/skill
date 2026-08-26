@@ -6,6 +6,10 @@ This project uses semantic-ish release tags for public snapshots. The current fo
 
 ## Unreleased
 
+### Added
+
+- Added mode 13 `13-steelman-verdict` (双向钢人裁决) to `ai-collaboration-calibration`: a bounded single-pass protocol that steel-mans both sides of a tentative idea on an unconfirmed problem, locates the conclusion-flipping variable, and closes with one key question plus an explicit verdict and next action. Verbatim prompt sourced from the original article (2026-08-18); routing added for "问题未确认 + 已有初步想法" inputs, with grill-me keeping formed-plan pressure testing.
+
 ### Changed
 
 - Upgraded `research-topic-compiler` with a dynamic framework-compilation contract that separates Evidence Framework from Explanation Framework, derives Framework V0 from each Research Job, records evidence-driven structural changes, and recompiles Markdown or HTML from Framework Vn instead of reusing fixed report templates.
