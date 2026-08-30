@@ -740,6 +740,79 @@
           "text": "The final artifact is synthesized from Framework Vn and keeps the contested linear model visible as a bounded interpretation or historical change."
         }
       ]
+    },
+    {
+      "id": "learning-report-tep97-code-architecture-regression",
+      "type": "historical-regression",
+      "prompt": "我想逐步学习 Grok Bot 0.18 非官方重建仓库和 StyleWork 前后端的 Agent 架构差异。请按关键调用链研究 Electron、host、coordinator、protocol、prompt、模型路由、沙箱、工具、状态与恢复，输出中文 learning report HTML。它要让我理解机制、对比 StyleWork 现状并知道怎么改，不要做成证据看板或商业 Grok 研究。",
+      "files": [],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Selects Learning Pack plus learning-report-html, preserves the named code objects, compiles a continuous mechanism-led architecture narrative, compares StyleWork on stable dimensions, and demotes detailed evidence to an audit appendix.",
+      "assertions": [
+        {"text": "Selects learning-report-html rather than research-dashboard-html or concept-dashboard-html."},
+        {"text": "Keeps the non-official reconstruction and StyleWork codebases as the comparison objects; does not drift to commercial Grok adoption or generic Agent research."},
+        {"text": "Builds at least three contestable claims and traces mechanisms through execution boundaries instead of only introducing terms."},
+        {"text": "Includes boundaries or overturn conditions and translates the comparison into bounded StyleWork changes or experiments."},
+        {"text": "Keeps detailed source lineage in footnotes, endnotes, or a collapsed appendix rather than a standalone evidence chapter in the main reading path."}
+      ]
+    },
+    {
+      "id": "learning-report-transfer-activation-mechanisms",
+      "type": "transfer",
+      "prompt": "基于附件中已完成的用户访谈和行为数据，给增长产品经理写一份中文 learning report HTML，深入解释为什么协作产品的新用户注册后没有创建第一个项目。我要学会区分几种机制、判断证据边界、对照当前 onboarding，并设计下一轮实验；不要做研究 Dashboard，也不要联网。",
+      "files": [
+        "evals/fixtures/learning-report-transfer/activation-interviews.md"
+      ],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Uses a causal learning narrative rather than an industry template, distinguishes competing mechanisms and evidence boundaries, compares current onboarding, and ends with bounded experiments.",
+      "assertions": [
+        {"text": "Uses learning-report-html and a causal or behavioral explanation framework."},
+        {"text": "Explains competing mechanisms, counterexamples, and what evidence would overturn each important judgment."},
+        {"text": "Connects the model to the current onboarding and gives measurable experiments with acceptance or stop criteria."}
+      ]
+    },
+    {
+      "id": "learning-report-independent-holdout-feature-flag-release",
+      "type": "independent-holdout",
+      "prompt": "只使用附件冻结材料，为产品经理写一份中文 learning report HTML：深入解释为什么 feature flag 不等于安全发布，对照当前系统，并给出有界改进。不要推荐厂商，不要把静态材料写成事故根因，不要做研究 Dashboard。",
+      "files": [
+        "evals/fixtures/learning-report-holdout/release-safety-pack.md"
+      ],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Transfers the learning-report contract to a non-AI technical topic: explains the release-decision mechanism, separates deploy, exposure, rollback and side-effect identity, preserves root-cause uncertainty, compares the current system, and ends with bounded acceptance criteria.",
+      "assertions": [
+        {"text": "Uses learning-report-html and does not expose research-control or Dashboard administration in the reading layer."},
+        {"text": "Explains why a boolean flag and configuration audit log do not by themselves reconstruct the decision applied to a transaction."},
+        {"text": "Does not claim that cache propagation caused the vignette and names evidence that would overturn the diagnosis."},
+        {"text": "Gives bounded improvements with deliverables, acceptance signals, guardrails, and stop conditions without prescribing a vendor."}
+      ]
+    },
+    {
+      "id": "learning-report-negative-dashboard-audit",
+      "type": "negative",
+      "prompt": "把这份已经完成的 L4 研究做成跨职能 Dashboard，给领导、产品、研发分别扫描；首屏必须看到证据覆盖、置信度、终态和 residual gaps。不要写成长文学习报告。",
+      "files": [],
+      "should_trigger": true,
+      "expected_route": "research-topic-compiler",
+      "expected_output": "Keeps the established research-dashboard-html route and does not force the learning-report artifact onto an audit-oriented multi-role request.",
+      "assertions": [
+        {"text": "Selects research-dashboard-html, preserves persona and audit-state requirements, and does not select learning-report-html."}
+      ]
+    },
+    {
+      "id": "learning-report-non-trigger-ui-only",
+      "type": "non-trigger",
+      "prompt": "内容已经定稿，不需要研究、补证据或改观点。请只把现有 HTML 的字号、网格、留白和移动端排版优化成编辑式长文。",
+      "files": [],
+      "should_trigger": false,
+      "expected_route": "external:frontend-design",
+      "expected_output": "Routes the UI-only implementation request to frontend-design and does not rerun research-topic-compiler.",
+      "assertions": [
+        {"text": "Does not start research or select a research artifact mode when content and claims are explicitly frozen."}
+      ]
     }
   ]
 }

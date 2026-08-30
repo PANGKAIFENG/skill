@@ -5,7 +5,7 @@
 | 阶段 | 首选 Skill | 何时停止或转交 |
 | --- | --- | --- |
 | 问题和目标含糊 | `ai-collaboration-calibration` | 问题可研究或可设计后再转下游 |
-| 需要系统产品研究或竞品证据 | `research-topic-compiler` | 形成 evidence pack；具体取舍交 `decision-research` |
+| 需要系统产品研究、竞品证据或深度学习报告 | `research-topic-compiler` | 单读者逐步学习用 `learning-report-html`；跨职能扫描用 Dashboard；具体取舍交 `decision-research` |
 | 需要一个明确选择 | `decision-research` | 有推荐、排除理由、置信度和颠覆条件 |
 | 方案尚未成形 | `brainstorming` | 用户确认 Design Spec 后交 PRD 或 UI |
 | 方案已成形但担心失败 | `grill-me` | 返回最小 Challenge/Design Delta；不自行放行 |

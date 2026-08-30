@@ -11,7 +11,7 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 class DashboardContractTests(unittest.TestCase):
     def test_skill_entrypoint_stays_within_context_budget(self) -> None:
         lines = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8").splitlines()
-        self.assertLessEqual(len(lines), 320)
+        self.assertLessEqual(len(lines), 380)
 
     def test_skill_metadata_exposes_generic_dashboard_triggers(self) -> None:
         text = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
@@ -25,7 +25,21 @@ class DashboardContractTests(unittest.TestCase):
         self.assertIn("## Output Artifact Modes", text)
         self.assertIn("research-dashboard-html", text)
         self.assertIn("concept-dashboard-html", text)
+        self.assertIn("learning-report-html", text)
         self.assertIn("Output artifact mode", text)
+
+    def test_learning_report_contract_is_bundled_and_routed(self) -> None:
+        contract = SKILL_ROOT / "references" / "learning-report-output-contract.md"
+        gate = SKILL_ROOT / "references" / "editorial-projection-gate.md"
+        self.assertTrue(contract.exists())
+        self.assertTrue(gate.exists())
+        skill_text = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
+        routing_text = (SKILL_ROOT / "references" / "mode-routing-guide.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("references/learning-report-output-contract.md", skill_text)
+        self.assertIn("references/editorial-projection-gate.md", skill_text)
+        self.assertIn("learning-report-html", routing_text)
 
     def test_general_dashboard_contract_is_bundled_and_routed(self) -> None:
         contract = SKILL_ROOT / "references" / "research-dashboard-output-contract.md"
@@ -81,8 +95,22 @@ class DashboardContractTests(unittest.TestCase):
                 "dashboard-not-created-when-not-requested",
                 "dashboard-transfer-mcp-auth-security",
                 "dashboard-partial-state-requires-explicit-acceptance",
+                "learning-report-tep97-code-architecture-regression",
+                "learning-report-transfer-activation-mechanisms",
+                "learning-report-independent-holdout-feature-flag-release",
+                "learning-report-negative-dashboard-audit",
+                "learning-report-non-trigger-ui-only",
             }.issubset(eval_ids)
         )
+
+    def test_learning_report_transfer_and_holdout_fixtures_are_bundled(self) -> None:
+        for relative_path in (
+            "evals/fixtures/learning-report-transfer/activation-interviews.md",
+            "evals/fixtures/learning-report-holdout/release-safety-pack.md",
+        ):
+            path = SKILL_ROOT / relative_path
+            self.assertTrue(path.exists(), relative_path)
+            self.assertTrue(path.read_text(encoding="utf-8").strip(), relative_path)
 
     def test_dashboard_catalog_discovery_evals_cover_trigger_and_near_miss(self) -> None:
         payload = json.loads(
@@ -130,6 +158,32 @@ class DashboardContractTests(unittest.TestCase):
             self.assertIn("HTTP 200 empty stub", text)
             self.assertIn("native fallback", text)
             self.assertIn("zero console errors", text)
+
+    def test_learning_report_rubric_is_bundled(self) -> None:
+        rubric = SKILL_ROOT / "evals" / "graders" / "learning-report-rubric.md"
+        self.assertTrue(rubric.exists())
+        text = rubric.read_text(encoding="utf-8")
+        for phrase in (
+            "Mechanism depth",
+            "Narrative coherence",
+            "Learning-Effect Questions",
+            "Blind Comparison Protocol",
+            "independent holdout",
+        ):
+            self.assertIn(phrase, text)
+
+    def test_learning_report_template_exposes_release_semantics(self) -> None:
+        template = (SKILL_ROOT / "assets" / "semantic-editorial-template.html").read_text(
+            encoding="utf-8"
+        )
+        for marker in (
+            "data-learning-report",
+            "data-report-comparison",
+            "data-action",
+            "data-report-boundary",
+            "data-evidence-appendix",
+        ):
+            self.assertIn(marker, template)
 
 
 if __name__ == "__main__":

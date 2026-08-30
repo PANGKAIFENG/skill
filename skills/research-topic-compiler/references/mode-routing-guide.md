@@ -44,6 +44,26 @@ This is an output artifact route for `Normal Research` and `Application`, not a 
 - 输出 `dashboard.html` 与 `summary.md`，运行 `python3 scripts/validate_html_artifact.py <path-to-dashboard.html>`，并做桌面/移动端浏览器检查。
 - 普通聊天、Markdown-only、L1/L2 快答和 UI mockup 请求不自动生成 HTML。用户要求最终选一个时仍转交 `decision-research`。
 
+## Learning Report HTML Output
+
+This is the reader-facing artifact route for a Learning Pack or a single-reader Normal Research/Application run. It is not a new research mode.
+
+### Trigger Signals
+
+- 用户说“让我系统学会”“逐步理解”“深入解释”“不要蜻蜓点水”“观点要鲜明”。
+- 用户要把行业/技术演进讲清楚，再对比自己的现状，最后落到可执行改进。
+- 用户要 `learning report HTML`、学习型 HTML、长文式报告或可连续阅读的研究产物，而不是研究过程看板。
+
+### Working Rules
+
+- 选择 `learning-report-html`，读取 `editorial-projection-gate.md` 与 `learning-report-output-contract.md`。
+- 先完成适用的 Research Framework 和终态门禁，再执行 Editorial Projection Gate；不得让 HTML 写作替代研究循环。
+- 以一个主要读者为中心，按“论点 -> 机制 -> 对照 -> 边界 -> 当前状态 -> 行动”编译连续叙事；具体顺序由 Framework Vn 决定。
+- 证据默认放脚注、文末或折叠审计附录；影响结论的反例和不确定性留在正文。
+- 用一张精确比较表和 1-3 个有语义的视觉关系帮助理解；不要把每节做成卡片或展示研究状态。
+- 生成 `report.html` 与 `summary.md`，运行 `python3 scripts/validate_html_artifact.py <path-to-report.html>`，并完成桌面/平板/390x844 检查。
+- UI-only 请求继续交给 `frontend-design`；多角色扫描和证据审计继续使用 `research-dashboard-html`。
+
 ## Learning Pack Mode
 
 ### Trigger Signals

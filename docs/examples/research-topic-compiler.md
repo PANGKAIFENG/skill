@@ -35,6 +35,24 @@ $research-topic-compiler
 把研究结论转成 3 个可以优先沉淀的 Skill 候选。
 ```
 
+## Learning Report HTML Example
+
+```text
+$research-topic-compiler
+
+系统研究这个技术主题，输出一份中文 learning report HTML。读者是 AI 产品经理：
+我要先建立统一机制模型，再对比现有系统，最后得到可以验证的改进动作。
+不要把研究状态、证据筛选或置信度看板放在主叙事里；证据放脚注和折叠附录。
+```
+
+Expected artifact behavior:
+
+- Selects `learning-report-html`, not a research Dashboard.
+- Uses a continuous conclusion-and-mechanism narrative with three to five contestable claims.
+- Compares the topic with the reader's current state on stable dimensions.
+- Ends with bounded actions, acceptance/stop criteria, and a material boundary.
+- Keeps the HTML self-contained and validates it with the companion summary.
+
 ## Goal-Framing Example
 
 ```text

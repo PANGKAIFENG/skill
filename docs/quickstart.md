@@ -18,7 +18,7 @@ python3 scripts/audit_skills.py .
 | Goal | Skill | Example |
 | --- | --- | --- |
 | Clarify a fuzzy problem | `ai-collaboration-calibration` | `$ai-collaboration-calibration 先帮我把问题说清楚` |
-| Research a product topic | `research-topic-compiler` | `$research-topic-compiler 研究这个方向并输出证据与决策输入` |
+| Research a product topic | `research-topic-compiler` | `$research-topic-compiler 研究这个方向并输出证据与决策输入；若要系统学习和对比现状，指定 learning-report-html` |
 | Choose between options | `decision-research` | `$decision-research 比较方案并给出有立场推荐` |
 | Compare product solutions | `brainstorming` | `$brainstorming 先不要写 PRD，比较 2-3 个方案` |
 | Pressure-test a solution | `grill-me` | `$grill-me 拷问这个方案，找最早失败点` |

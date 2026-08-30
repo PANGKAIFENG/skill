@@ -30,8 +30,11 @@ Choose the artifact after choosing the research mode and depth:
 | `research-project-md` | Obsidian or Markdown research asset. |
 | `concept-dashboard-html` | Concept Lens HTML only. |
 | `research-dashboard-html` | Normal Research/Application HTML for general or cross-functional readers. |
+| `learning-report-html` | Learning Pack or single-reader deep research HTML with a continuous editorial narrative. |
 
 An HTML request changes the artifact, not the research owner or evidence gate. Do not route a general Dashboard request into Concept Lens solely because it says "HTML" or "dashboard".
+
+When the user wants to learn a topic step by step, understand mechanisms deeply, compare the topic with their current situation, and leave with changes to make, select `learning-report-html`. Keep evidence in footnotes/endnotes or a collapsed appendix. Use `research-dashboard-html` only when multi-role scanning or audit visibility is the primary job.
 
 ## Minimal Loading Rule
 
@@ -40,7 +43,7 @@ Load only the references needed for the selected mode:
 - Normal: depth rubric, source quality, report standards.
 - Normal + research dashboard: the Normal references plus research-dashboard output contract after the terminal gate.
 - Concept Lens: concept-lens source, paradigm, output contract, design quality if HTML.
-- Learning Pack: learning-pack standards.
+- Learning Pack: learning-pack standards; if HTML is requested, also load `editorial-projection-gate.md` and `learning-report-output-contract.md`.
 - Application: applied-business-research contract and post-research exits.
 - Application + research dashboard: the Application references plus research-dashboard output contract after the terminal gate.
 - Radar: radar loop contract.

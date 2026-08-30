@@ -9,11 +9,14 @@ This project uses semantic-ish release tags for public snapshots. The current fo
 ### Added
 
 - Added mode 13 `13-steelman-verdict` (双向钢人裁决) to `ai-collaboration-calibration`: a bounded single-pass protocol that steel-mans both sides of a tentative idea on an unconfirmed problem, locates the conclusion-flipping variable, and closes with one key question plus an explicit verdict and next action. Verbatim prompt sourced from the original article (2026-08-18); routing added for "问题未确认 + 已有初步想法" inputs, with grill-me keeping formed-plan pressure testing.
+- Added a self-contained semantic editorial template, a Learning Report quality rubric, and historical/transfer/negative evals for deep reader-facing HTML artifacts.
 
 ### Changed
 
 - Upgraded `research-topic-compiler` with a dynamic framework-compilation contract that separates Evidence Framework from Explanation Framework, derives Framework V0 from each Research Job, records evidence-driven structural changes, and recompiles Markdown or HTML from Framework Vn instead of reusing fixed report templates.
 - Added historical, transfer, structural-reframe, and user-provided-outline eval coverage plus a dedicated framework-compilation grader.
+- Split `learning-report-html` from research Dashboards, added a Reader Contract and editorial projection gate, and demoted evidence administration to a compact audit layer.
+- Extended HTML validation with learning-report markers, self-contained asset and internal-link checks, bounded-action requirements, collapsed evidence checks, and research-control leakage detection.
 
 ## [0.3.3] - 2026-08-10
 

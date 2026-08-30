@@ -23,6 +23,10 @@ Use `graders/research-framework-compilation-rubric.md` for framework-compilation
 
 Use `graders/dashboard-artifact-rubric.md` for `research-dashboard-html` runs. Grade both files plus the trace, run the validator, and keep browser-only claims unverified until desktop/mobile evidence exists.
 
+Use `graders/learning-report-rubric.md` for `learning-report-html` runs. Grade the continuous reading flow, thesis and mechanism depth, comparison, boundaries, user translation, action quality, audit-layer evidence placement, and desktop/mobile UI. Marker compliance alone is not a semantic pass.
+
+The learning-report release gate includes a frozen activation transfer fixture and a synthetic non-AI feature-flag holdout. Generate both HTML + summary pairs in an external eval workspace, run the validator, and record a rubric score. The holdout is frozen after the candidate contract is authored; do not tune the contract against its prose or expected answer.
+
 ## Deterministic Checks
 
 Run from the repository root:
@@ -35,7 +39,7 @@ python3 skills/research-topic-compiler/scripts/validate_html_artifact.py \
 jq empty skills/research-topic-compiler/evals/evals.json
 ```
 
-The unit suite covers both dashboard roots, required real-element attributes, missing markers, dual roots, comment/script fake markers, backend calls, unresolved placeholders, local source paths, and the persisted general Dashboard fixture.
+The unit suite covers both dashboard roots plus the learning-report root, required real-element attributes, evidence-secondary placement, core-claim count, missing markers, dual roots, comment/script fake markers, backend calls, unresolved placeholders, local source paths, and the persisted general Dashboard fixture.
 
 ## Behavior Run Layout
 
