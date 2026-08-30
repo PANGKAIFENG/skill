@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{TITLE}}</title>
+  <style>
+    :root {
+      --paper: #f7f7f4;
+      --surface: #ffffff;
+      --ink: #171817;
+      --muted: #616560;
+      --line: #d8dcd6;
+      --accent: #c23b2a;
+      --green: #2d6a4f;
+      --yellow: #e5b94a;
+      --max: 1120px;
+      --reading: 760px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+    .reading { width: min(100%, var(--reading)); margin-inline: auto; }
+    .report-header { min-height: 56vh; display: grid; align-items: end; padding: 72px 0 52px; border-bottom: 1px solid var(--line); }
+    .eyebrow { color: var(--accent); font-size: 13px; font-weight: 750; text-transform: uppercase; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: 0; text-wrap: balance; }
+    h1 { max-width: 930px; margin: 18px 0 22px; font-family: Georgia, "Songti SC", serif; font-size: 64px; font-weight: 600; }
+    h2 { margin: 0 0 28px; font-family: Georgia, "Songti SC", serif; font-size: 36px; font-weight: 600; }
+    h3 { margin: 0 0 10px; font-size: 21px; }
+    .standfirst { max-width: 780px; margin: 0; color: #343834; font-size: 23px; line-height: 1.55; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 34px; color: var(--muted); font-size: 14px; }
+    .report-nav { position: sticky; top: 0; z-index: 10; background: rgba(247,247,244,.96); border-bottom: 1px solid var(--line); }
+    .report-nav .wrap { display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; }
+    .report-nav a { flex: none; padding: 14px 0 12px; color: var(--muted); font-size: 14px; text-decoration: none; border-bottom: 2px solid transparent; }
+    .report-nav a[aria-current="true"] { color: var(--ink); border-color: var(--accent); }
+    section { scroll-margin-top: 64px; padding: 88px 0; }
+    section + section { border-top: 1px solid var(--line); }
+    .section-index { display: block; margin-bottom: 14px; color: var(--accent); font-size: 13px; font-weight: 750; }
+    .lead { margin: 0 0 38px; color: #343834; font-size: 21px; line-height: 1.65; }
+    .claim-list { border-top: 2px solid var(--ink); }
+    .claim { display: grid; grid-template-columns: 60px 1fr; gap: 20px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .claim-num { color: var(--accent); font: 600 26px Georgia, serif; }
+    .claim p { margin: 8px 0 0; color: var(--muted); }
+    .wide { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+    .figure { margin: 40px 0 0; padding: 32px; background: #20231f; color: #fff; border-radius: 6px; }
+    .figure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #555b54; }
+    .figure-grid > div { min-width: 0; padding: 24px; background: #20231f; }
+    .figure small { color: #bcc4bb; }
+    .table-shell { margin-top: 36px; overflow-x: auto; border-block: 2px solid var(--ink); }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { padding: 18px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+    th { font-size: 13px; text-transform: uppercase; }
+    .callout { margin: 38px 0; padding: 24px 28px; border-left: 4px solid var(--accent); background: #fff; }
+    .action-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .action { padding-top: 18px; border-top: 3px solid var(--green); }
+    .action p { color: var(--muted); }
+    .footnote { font-size: .75em; vertical-align: super; }
+    .audit { padding: 64px 0 88px; color: var(--muted); }
+    .audit details { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .audit summary { cursor: pointer; padding: 20px 0; color: var(--ink); font-weight: 700; }
+    .audit-body { padding: 0 0 28px; font-size: 14px; }
+    .audit-body li { margin: 10px 0; overflow-wrap: anywhere; }
+    footer { padding: 28px 0 56px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+    @media (max-width: 760px) {
+      .wrap, .wide { width: min(calc(100% - 32px), var(--max)); }
+      .report-header { min-height: auto; padding: 52px 0 38px; }
+      h1 { font-size: 40px; }
+      h2 { font-size: 28px; }
+      .standfirst { font-size: 19px; }
+      section { padding: 64px 0; }
+      .claim { grid-template-columns: 42px 1fr; gap: 10px; }
+      .figure { padding: 22px; }
+      .figure-grid, .action-list { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <main data-learning-report>
+    <header class="report-header" data-report-thesis>
+      <div class="wrap">
+        <div class="eyebrow">{{REPORT_LABEL}}</div>
+        <h1>{{TITLE}}</h1>
+        <p class="standfirst">{{PRECISE_STANDFIRST}}</p>
+        <div class="meta"><span>{{PRIMARY_READER}}</span><span>{{SCOPE}}</span><span>{{DATE}}</span></div>
+      </div>
+    </header>
+
+    <nav class="report-nav" data-report-nav aria-label="报告目录">
+      <div class="wrap">
+        <a href="#theses">核心判断</a><a href="#model">机制</a><a href="#comparison">对照</a><a href="#application">行动</a>
+      </div>
+    </nav>
+
+    <section id="theses" data-reading-path>
+      <div class="reading">
+        <span class="section-index">01 / 核心判断</span>
+        <h2>{{THESIS_SECTION_TITLE}}</h2>
+        <p class="lead">{{THESIS_SECTION_LEAD}}</p>
+        <div class="claim-list">
+          <article class="claim" data-core-claim><div class="claim-num">01</div><div><h3>{{CLAIM_ONE}}</h3><p>{{CLAIM_ONE_EXPLANATION}}</p></div></article>
+          <article class="claim" data-core-claim><div class="claim-num">02</div><div><h3>{{CLAIM_TWO}}</h3><p>{{CLAIM_TWO_EXPLANATION}}</p></div></article>
+          <article class="claim" data-core-claim><div class="claim-num">03</div><div><h3>{{CLAIM_THREE}}</h3><p>{{CLAIM_THREE_EXPLANATION}}</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="model" data-mechanism>
+      <div class="reading"><span class="section-index">02 / 机制</span><h2>{{MECHANISM_TITLE}}</h2><p class="lead">{{MECHANISM_EXPLANATION}}<sup class="footnote"><a href="#source-1">1</a></sup></p></div>
+      <figure class="figure wide" data-visual-memory>
+        <div class="figure-grid"><div><small>输入</small><h3>{{FLOW_ONE}}</h3></div><div><small>转换</small><h3>{{FLOW_TWO}}</h3></div><div><small>结果</small><h3>{{FLOW_THREE}}</h3></div></div>
+      </figure>
+    </section>
+
+    <section id="comparison" data-report-comparison>
+      <div class="wide"><span class="section-index">03 / 对照</span><h2>{{COMPARISON_TITLE}}</h2><p class="lead reading">{{COMPARISON_LEAD}}</p>
+        <div class="table-shell"><table><thead><tr><th>维度</th><th>{{OBJECT_A}}</th><th>{{OBJECT_B}}</th><th>为什么重要</th></tr></thead><tbody>{{COMPARISON_ROWS}}</tbody></table></div>
+      </div>
+    </section>
+
+    <section id="application" data-application>
+      <div class="reading"><span class="section-index">04 / 行动</span><h2>{{APPLICATION_TITLE}}</h2><p class="lead">{{APPLICATION_LEAD}}</p>
+        <div class="action-list"><article class="action" data-action><h3>{{ACTION_ONE}}</h3><p>{{ACTION_ONE_DETAIL}}</p></article><article class="action" data-action><h3>{{ACTION_TWO}}</h3><p>{{ACTION_TWO_DETAIL}}</p></article><article class="action" data-action><h3>{{ACTION_THREE}}</h3><p>{{ACTION_THREE_DETAIL}}</p></article></div>
+        <aside class="callout" data-report-boundary><strong>{{BOUNDARY_TITLE}}</strong><p>{{BOUNDARY_AND_OVERTURN_CONDITION}}</p></aside>
+      </div>
+    </section>
+
+    <aside class="audit" data-sources>
+      <div class="reading">
+        <details data-evidence-appendix data-evidence-placement="collapsed">
+          <summary>来源、注释与研究边界</summary>
+          <div class="audit-body"><ol><li id="source-1">{{SOURCE_ONE_WITH_LOCATOR_AND_LIMIT}}</li></ol></div>
+        </details>
+      </div>
+    </aside>
+  </main>
+  <footer><div class="wrap">{{FOOTER_NOTE}}</div></footer>
+  <script>
+    (() => {
+      const links = [...document.querySelectorAll('[data-report-nav] a')];
+      const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      if (!('IntersectionObserver' in window)) return;
+      const observer = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        links.forEach(link => link.setAttribute('aria-current', String(link.getAttribute('href') === `#${visible.target.id}`)));
+      }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .25, .5] });
+      sections.forEach(section => observer.observe(section));
+    })();
+  </script>
+</body>
+</html>

@@ -5,7 +5,7 @@ v0.3 的原子能力固定为 15 个 Skill。`core` 表示默认 PM 面，`activ
 | Skill | 职责 | 状态 | 合并/边界说明 |
 | --- | --- | --- | --- |
 | `ai-collaboration-calibration` | 校准问题、目标、假设和讨论边界 | core | 不直接写 PRD 或替用户做最终决策 |
-| `research-topic-compiler` | 产品研究、竞品证据、候选池、研究项目和决策输入 | core | 合入 `competitive-analysis` 的 evidence mode |
+| `research-topic-compiler` | 产品研究、深度学习报告、竞品证据、候选池、研究项目和决策输入 | core | HTML 学习报告与研究 Dashboard 分层；合入 `competitive-analysis` 的 evidence mode |
 | `decision-research` | 围绕一个具体问题做有界取证并给推荐 | core | 不做开放式专题知识沉淀 |
 | `brainstorming` | 生成并比较产品方案、范围、流程、交互和 Design Spec | core | 不自批 readiness；压力测试交给 `grill-me` |
 | `grill-me` | 对方案和 PRD 前置判断做反方挑战 | core | 只返回最小可修复 gap |

@@ -6,7 +6,7 @@ description: >
   当用户只有大白话、模糊方向、业务愿望或 Roadmap/PRD 前置材料想法，需要先转成清晰研究目标、研究问题和输出要求时也使用。
   适合把研究转成 Research Project、学习报告、证据矩阵、PM 决策看板、候选池、模板、实践任务、业务判断、商业化输入或高门槛应用研究前置。适合“系统研究一个主题”
   “整理到 Obsidian”“做深度专题”“研究行业最佳实践”“概念解读”“概念源流”“PM 技术评审提问脚本”
-  “行业演进看板”“这个主题对我的产品决策有什么用”。不适合创建 Skill、评审 SKILL.md、普通即时搜索或一次性摘要。
+  “行业演进看板”“这个主题对我的产品决策有什么用”“让我系统学会并输出 learning report HTML”。不适合创建 Skill、评审 SKILL.md、普通即时搜索或一次性摘要。
   当用户已经要在明确候选项中选一个、需要最终推荐和排除理由时，应使用 decision-research。
   当 decision-research 或 grill-me 返回一个可研究、可关闭的精确证据 gap 时，也使用本 Skill 只补 Evidence Delta。
 ---
@@ -19,6 +19,7 @@ description: >
 - 分类：研究学习 / Obsidian 知识编译
 - 你可以这样叫我：`系统研究这个主题`、`帮我整理到 Obsidian`、`做一个深度专题`、`研究行业最佳实践`、`概念解读`、`概念源流`、`PM 技术评审提问脚本`、`行业演进看板`、`把这个大白话拆成研究目标`
 - 适合：围绕产品问题做多渠道证据收集、竞品与替代方案比较、用户/市场信号、证据矩阵、阶段结论、候选池、研究看板和应用转化；也适合把用户的大白话、模糊主题或 Roadmap 前置想法转成研究目标、研究问题和输出要求
+- 默认学习型 HTML：当用户要逐步理解、深入解释、对比自身现状并落到行动时，使用 `learning-report-html`，不要把研究控制面直接投影成 Dashboard。
 - 不适合：创建或评审 Skill；普通新闻搜索或一次性摘要；明确要“选一个 / 给最终推荐 / 排除其他方案”时改用 `decision-research`
 ## Overview
 使用这个 Skill 把一个研究主题编译成可学习、可追溯、可继续扩展、并能按用户画像转化为实际工作判断的 Obsidian Research Project 或聊天内研究报告。
@@ -131,10 +132,13 @@ Research Mode 决定研究方法，Output Artifact Mode 决定交付形态；两
 | `research-project-md` | 用户要 Obsidian Research Project、Markdown 报告或可继续维护的研究资产 | `00-05` 及按需扩展文件 |
 | `concept-dashboard-html` | `Lightweight Concept Lens` 的概念源流、范式阶段或概念债务需要可视化 | `dashboard.html` + `summary.md` |
 | `research-dashboard-html` | 一般专题、Application 或跨职能评审需要给领导、产品、研发等角色扫描、比较和行动 | `dashboard.html` + `summary.md` |
+| `learning-report-html` | 一个主要读者要连续学习、建立机制模型、比较自身现状并采取行动 | `report.html` + `summary.md` |
 
 - 用户明确要求 HTML、网页看板、可视化研究报告或跨职能 Dashboard 时，选择相应 HTML artifact mode。
 - 当研究结果需要多角色阅读、证据与结论并列、或直接进入 Roadmap/PRD/评审时，可以建议 `research-dashboard-html`，但只有用户明确要求或接受建议后才生成文件。
+- 当用户说“逐步学习 / 深入理解 / 不要蜻蜓点水 / 对比我的现状 / 最后告诉我怎么改”，默认选择 `learning-report-html`；它使用连续编辑式正文，证据放脚注、文末或折叠附录。
 - `concept-dashboard-html` 只承载 Concept Lens；一般 Normal Research/Application 使用 `research-dashboard-html`，读取 `references/research-dashboard-output-contract.md`。
+- `learning-report-html` 读取 `references/learning-report-output-contract.md`，并在渲染前通过 `references/editorial-projection-gate.md`；它不是研究过程报告，也不是 UI mockup。
 - Do not generate HTML for chat/Markdown-only requests, ordinary L1/L2 answers, or UI mockup requests unless the user explicitly asks for a research dashboard artifact.
 - 输出形态不能覆盖相邻 Skill 边界；用户要求最终选择和排除理由时仍交给 `decision-research`。
 
@@ -189,6 +193,14 @@ Research Mode 决定研究方法，Output Artifact Mode 决定交付形态；两
 
 Dashboard 必须从 Framework Vn 投影，并保留它与 Evidence/Source Graph、Framework Change Events、confidence、residual Gap、residual risks 和 next actions 的映射；可视化形式由 Vn 中的阶段、比较、因果、层级、流程、循环或状态关系决定。压缩展示时不得删除影响结论的矛盾、弱证据或未关闭问题，也不得把研究输入包装成最终决策。
 
+### Learning Report Projection Gate
+
+当 Artifact Mode 为 `learning-report-html` 时，先读取 `references/editorial-projection-gate.md` 和 `references/learning-report-output-contract.md`。研究循环仍先完成，但读者页面只投影最新 Explanation Framework 的结论 spine、机制、比较、边界、用户转译和行动；Evidence/Source Graph、Change Events、置信度和方法说明进入脚注、文末或折叠审计层。页面不得把 `NBE`、`terminal status`、Persona tabs 或证据矩阵当作主叙事。
+
+渲染前必须得到唯一的 `ready` 编辑投影决定，并逐项通过 Claim、Mechanism、Evidence、Boundary、User implication、Overturn condition 深度测试。至少形成 3-5 个可争辩核心观点、1 条清晰机制链、1 个有意义对照、1 个边界/反例和至少 2 个面向当前用户的有界行动。若只能做概念普及或证据仍会改变结论，回到研究或改用 Dashboard；不要用视觉设计掩盖深度不足。
+
+Learning Report 的静态验收要把 HTML 与 companion summary 一起传给 validator；它会检查自包含资源、内部链接、主叙事中的研究控制术语、折叠审计层、比较/边界/行动语义。发布级改动还必须按 `evals/graders/learning-report-rubric.md` 做匿名旧新对比，并覆盖 historical regression、transfer、near-boundary negative 与未参与调参的 holdout。
+
 ### Product Candidate Research 分支步骤
 
 当 Workflow 第 2 步判定为 Product Candidate Research 模式时，在 Research Run Plan 后按以下独立流程继续，不进入 Normal/Application 七步控制面：
@@ -219,7 +231,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 - User goal / Research Job: <用户要学会、判断或沉淀什么；这份研究要帮助谁理解、判断或完成什么>
 - Framed from raw intent: <yes/no; if yes, summarize interpreted research goal>
 - Research mode: <Normal Research / Lightweight Concept Lens / Learning Pack / Application / Radar / Product Candidate>
-- Output artifact mode: <chat-brief / research-project-md / concept-dashboard-html / research-dashboard-html>
+- Output artifact mode: <chat-brief / research-project-md / concept-dashboard-html / research-dashboard-html / learning-report-html>
 - User context: <role, domain, technical_depth, goal_type, output_preference, application_context, decision_need>
 - Recommended depth: <L1 / L2 / L3 / L4 / L5, with reason>
 - Topic type: <平台能力 / 开源工程 / 产品竞品 / 学术方法 / 政策合规 / 市场趋势 / 其他>
@@ -260,7 +272,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 - Project/report: <Obsidian path or chat-only>
 - Depth used: <L1-L5>
 - Research mode: <Normal / Lightweight Concept Lens / Learning Pack / Application / Radar / Product Candidate>
-- Output artifact mode: <chat-brief / research-project-md / concept-dashboard-html / research-dashboard-html>
+- Output artifact mode: <chat-brief / research-project-md / concept-dashboard-html / research-dashboard-html / learning-report-html>
 - Persona adaptation: <role/domain/depth/goal used, or generic>
 - Channels used: <channels + each channel's target Gap/evidence role>
 - Core conclusions / Explanation Framework: <latest version + controlling question + dominant logic + 3-7 conclusions + material structural changes or justified none>
@@ -296,7 +308,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 
 - `L1` 快查：给出直接答案、来源和证据局限。
 - `Lightweight Concept Lens`：给出概念源流、语义演化、范式阶段、PM 决策问题、反模式或概念债务判断；如果生成 HTML，静态验证已通过或明确说明限制。
-- HTML artifact：生成对应的 `dashboard.html` 与 `summary.md`；使用正确的 root marker；运行 `scripts/validate_html_artifact.py`；完成桌面与移动端视觉检查，或明确记录浏览器验证限制。Normal Research/Application 的 Dashboard 还必须保留唯一终态、证据强度、关键变化、residual Gap/risks 和下一步行动。
+- HTML artifact：Dashboard 生成 `dashboard.html` + `summary.md`；学习型报告生成 `report.html` + `summary.md`。两者都使用正确 root marker、运行 `scripts/validate_html_artifact.py` 并完成桌面与移动端检查。Learning Report 还必须通过编辑投影门、深度 rubric 和证据次级呈现检查；Dashboard 还必须保留唯一终态、证据强度、关键变化、residual Gap/risks 和下一步行动。
 - `L2`：给出主题地图、核心概念、基础案例、来源和下一步阅读。
 - `L3`：Research Project 或聊天报告已覆盖问题清单、证据矩阵、阶段结论和第一阅读入口式 `05_研究报告`；结构化报告已识别 Research Job、建立 Evidence/Explanation Framework 映射并从通过质量门禁的 Framework Vn 综合，未把示例五问、Seed 目录或上一次报告模板当成通用框架。
 - `L4`：按当前 Gap 和用户目标形成必要的外部渠道研究、行业案例对照、最佳实践或应用模板，能指导方案设计、选型、商业化、企业 adoption、workflow 设计或 PRD 输入；若是高门槛应用研究，还应给出迁移判断、矩阵、风险和分阶段路径。
@@ -313,7 +325,7 @@ L3+、需要用户确认范围/授权、或用户明确要求研究计划时输�
 
 - 研究入口与 Normal/Application：`mode-selection.md`、`mode-routing-guide.md`、`research-goal-framing-gate.md`、`research-framework-compilation-contract.md`、`research-depth-rubric.md`、`user-context-standards.md`、`iterative-research-loop.md`、`applied-business-research-contract.md`、`source-quality-rules.md`、`report-writing-standards.md`。
 - 渠道与写回：`pre-research-source-expansion.md`、`channel-selection-rubric.md`、`channel-registry.md`、`obsidian-output-contract.md`。
-- Concept Lens / HTML：`concept-lens-output-contract.md`、`concept-lens-html-dashboard-template.md`、`concept-lens-paradigm-framework.md`、`concept-lens-source-and-factuality.md`、`concept-lens-design-quality.md`；一般研究 Dashboard 使用 `research-dashboard-output-contract.md` 和 `scripts/validate_html_artifact.py`。
+- Concept Lens / HTML：`concept-lens-output-contract.md`、`concept-lens-html-dashboard-template.md`、`concept-lens-paradigm-framework.md`、`concept-lens-source-and-factuality.md`、`concept-lens-design-quality.md`；一般研究 Dashboard 使用 `research-dashboard-output-contract.md`；学习型 HTML 使用 `editorial-projection-gate.md`、`learning-report-output-contract.md` 和 `assets/semantic-editorial-template.html`，均运行 `scripts/validate_html_artifact.py`。
 - Product Candidate：`product-decision-mode.md`、`project-context-intake.md`、`taxonomy-translation.md`、`candidate-backlog-schema.md`、`cross-session-handoff.md`、`post-research-exits.md`。
 - Product Research：`product-evidence-channel-guide.md`；浏览器取证必须读取 `browser-walkthrough-boundaries.md`；完整简报使用 `product-decision-brief-template.md` 和 `scripts/check_product_decision_brief.py`。
 - Core Loop：`core-loop-research-handoff.md`；只有发生跨 Skill handoff 或 return edge 时读取。

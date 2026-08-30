@@ -9,7 +9,7 @@
 | Skill | 用途 | 入口 |
 | --- | --- | --- |
 | `ai-collaboration-calibration` | 把模糊表达校准成可处理的问题 | [Skill](skills/ai-collaboration-calibration/) · [示例](docs/examples/ai-collaboration-calibration.md) |
-| `research-topic-compiler` | 做产品研究并沉淀证据、判断和决策输入 | [Skill](skills/research-topic-compiler/) · [示例](docs/examples/research-topic-compiler.md) |
+| `research-topic-compiler` | 做产品研究、深度学习报告并沉淀证据、判断和决策输入 | [Skill](skills/research-topic-compiler/) · [示例](docs/examples/research-topic-compiler.md) |
 | `decision-research` | 针对一个具体选择做有界调研和推荐 | [Skill](skills/decision-research/) · [示例](docs/examples/decision-research.md) |
 | `brainstorming` | 在 PRD 前比较方案、范围和交互路径 | [Skill](skills/brainstorming/) · [示例](docs/examples/brainstorming.md) |
 | `grill-me` | 对已有方案做反方压力测试 | [Skill](skills/grill-me/) · [示例](docs/examples/grill-me.md) |
